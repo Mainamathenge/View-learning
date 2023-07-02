@@ -45,7 +45,7 @@ app.component('friend-contact', {
   },
   methods: {
     toggleDetails() {
-      this.detailsAreVisible = !this.detailsAreVisible;
+      this.detailsAreVisible =!this.detailsAreVisible;
     },
   },
 });
