@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  // props: ['name', 'phoneNumber', 'emailAddress', 'isFavorite'],
   props: {
     id: {
       type: String,
@@ -40,9 +41,22 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+      // validator: function(value) {
+      //   return value === '1' || value === '0';
+      // }
     },
   },
   emits: ['toggle-favorite', 'delete'],
+  // emits: {
+  //   'toggle-favorite': function(id) {
+  //     if (id) {
+  //       return true;
+  //     } else {
+  //       console.warn('Id is missing!');
+  //       return false;
+  //     }
+  //   } 
+  // },
   data() {
     return {
       detailsAreVisible: false
