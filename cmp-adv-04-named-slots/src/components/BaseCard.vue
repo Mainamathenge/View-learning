@@ -1,23 +1,17 @@
 <template>
   <div>
     <header>
-      <slot name="header">
-        <h2>The default</h2>
-      </slot>
+      <slot name="header"></slot>
     </header>
     <slot></slot>
   </div>
 </template>
+
 <script>
-export default {
-  mounted(){
-    console.log(this.$slots)
-  }
-};
+export default {};
 </script>
 
 <style scoped>
-
 header {
   display: flex;
   justify-content: space-between;
