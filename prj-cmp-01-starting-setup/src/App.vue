@@ -1,39 +1,19 @@
 <template>
   <ul>
-    <learning-resources
-      v-for="res in storedResources"
-      :key="res.id"
-      :title="res.id"
-      :description="res.description"
-      :link="res.link"
-    ></learning-resources>
+    <the-header title="My Vue Project"></the-header>
+    <the-resource></the-resource>
   </ul>
 </template>
 
 <script>
-import LearningResources from './components/learning-resources/LearningResourceItem.vue';
-
+//import LearningResources from './components/learning-resources/LearningResourceItem.vue';
+//import StoredResources from './components/learning-resources/StoredResources.vue'
+import TheHeader from './components/Layouts/TheHeader.vue';
+import TheResource from './components/learning-resources/TheResource.vue';
 export default {
   components: {
-    LearningResources,
-  },
-  data() {
-    return {
-      storedResources: [
-        {
-          id: 'official-guide',
-          title: 'learning - vue JS',
-          description: 'the official docmunentation',
-          link: 'http://vuejs.org',
-        },
-        {
-          id: 'google',
-          title: 'Google',
-          description: 'learn to google',
-          link: 'https://google.com',
-        },
-      ],
-    };
+    TheResource,
+    TheHeader,
   },
 };
 </script>
@@ -52,5 +32,4 @@ html {
 body {
   margin: 0;
 }
-
 </style>
