@@ -2,25 +2,23 @@
   <base-card>
     <base-button
       @click="setSelectedTab('stored-resources')"
-      :mode="storeResButtonMode"
-      >Stored Resources</base-button
-    >
-    <base-button
-      @click="setSelectedTab('add-resources')"
-      :mode="AddResButtonMode"
-      >Add Resource</base-button
-    >
+      :mode="storedResButtonMode"
+    >Stored Resources</base-button>
+    <base-button @click="setSelectedTab('add-resource')" :mode="addResButtonMode">Add Resource</base-button>
   </base-card>
-  <component :is="selectedTab"></component>
+  <keep-alive>
+    <component :is="selectedTab"></component>
+  </keep-alive>
 </template>
 
 <script>
 import StoredResources from './StoredResources.vue';
-import AddResources from './AddResource.vue';
+import AddResource from './AddResource.vue';
+
 export default {
   components: {
     StoredResources,
-    AddResources,
+    AddResource,
   },
   data() {
     return {
@@ -28,15 +26,15 @@ export default {
       storedResources: [
         {
           id: 'official-guide',
-          title: 'learning - vue JS',
-          description: 'the official docmunentation',
-          link: 'http://vuejs.org',
+          title: 'Official Guide',
+          description: 'The official Vue.js documentation.',
+          link: 'https://vuejs.org',
         },
         {
           id: 'google',
           title: 'Google',
-          description: 'learn to google',
-          link: 'https://google.com',
+          description: 'Learn to google...',
+          link: 'https://google.org',
         },
       ],
     };
@@ -45,15 +43,14 @@ export default {
     return {
       resources: this.storedResources,
       addResource: this.addResource,
-      deleteResource: this.removeResource,
     };
   },
   computed: {
-    storeResButtonMode() {
+    storedResButtonMode() {
       return this.selectedTab === 'stored-resources' ? null : 'flat';
     },
-    AddResButtonMode() {
-      return this.selectedTab === 'add-resources' ? null : 'flat';
+    addResButtonMode() {
+      return this.selectedTab === 'add-resource' ? null : 'flat';
     },
   },
   methods: {
@@ -69,10 +66,6 @@ export default {
       };
       this.storedResources.unshift(newResource);
       this.selectedTab = 'stored-resources';
-    },
-    removeResource(reId) {
-      const resIndex = this.storedResources.findIndex((res) => res.id === reId);
-      this.storedResources.splice(resIndex, 1);
     },
   },
 };
